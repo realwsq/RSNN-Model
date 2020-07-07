@@ -1,4 +1,4 @@
-%tensorflow_version 2.x
+# %tensorflow_version 2.x
 import tensorflow as tf
 import matplotlib.pyplot as plt
 import numpy as np
