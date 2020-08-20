@@ -32,7 +32,7 @@ def calc_r(psth1, psth2, delay=input_delay):
 #     return r/explainable_variablity
 
 
-def PSTH_viz(ax psth_gt, psth_predict):
+def PSTH_viz(ax, psth_gt, psth_predict):
     # spikes: [T, n_neurons]
 
     n_t = range(sps.shape[1])
