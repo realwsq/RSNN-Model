@@ -20,8 +20,8 @@ def calc_psth_all_stims(spike_trains, filter=True, sigma=10):
 
 
 
-def calc_r(psth1, psth2, delay=input_delay):
-	return pearsonr(psth1[input_delay:], psth2[input_delay:])[0]
+def calc_r(psth1, psth2, delay=0):
+	return pearsonr(psth1[delay:], psth2[delay:])[0]
 
 # def calc_explainable_variability(psth_gt):
 #     # TODO
@@ -48,11 +48,11 @@ if __name__ == "__main__":
 	sps: (ground truth) [trial; T; neuron]
 	spikes_np: (prediction) [trial; T; neuron]
 	'''
-	psth_gt = calc_psth_all_stims([ST.T for ST in sps], filter=True, sigma=psth_sigma)
-	psth_predict = calc_psth_all_stims([ST.T for ST in spikes_np], filter=True, sigma=psth_sigma)
-	print("r=%f"%(calc_r(psth_gt, psth_predict)))
+	# psth_gt = calc_psth_all_stims([ST.T for ST in sps], filter=True, sigma=psth_sigma)
+	# psth_predict = calc_psth_all_stims([ST.T for ST in spikes_np], filter=True, sigma=psth_sigma)
+	# print("r=%f"%(calc_r(psth_gt, psth_predict)))
 
-	fig,ax = plt.subplots(1, figsize=(10,2))
-	PSTH_viz(ax, psth_gt, psth_predict)
+	# fig,ax = plt.subplots(1, figsize=(10,2))
+	# PSTH_viz(ax, psth_gt, psth_predict)
 
 
