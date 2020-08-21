@@ -88,22 +88,22 @@ class RSNN(tf.keras.layers.Layer):
 
 
         # define the input weight variable
-        # self.input_weights_spatial = self.add_weight(
-        #     shape=(n_in,n),
-        #     trainable=True,
-        #     initializer=rand_init(stddev=1. / np.sqrt(n_in)),
-        #     name='input_weights_spatial')
-        
-        # self.input_weights_temporary = self.add_weight(
-        #     shape=(self.input_delay,),
-        #     trainable=True,
-        #     initializer= const_init(1.  / np.sqrt(self.input_delay)),
-        #     name='input_weights_temporary')
-        self.input_weights = self.add_weight(
-            shape=(n_in,n, self.input_delay),
+        self.input_weights_spatial = self.add_weight(
+            shape=(n_in,n),
             trainable=True,
-            initializer=rand_init(stddev=1. / np.sqrt(n_in * self.input_delay)),
+            initializer=rand_init(stddev=1. / np.sqrt(n_in)),
             name='input_weights_spatial')
+        
+        self.input_weights_temporary = self.add_weight(
+            shape=(self.input_delay,),
+            trainable=True,
+            initializer= const_init(1.  / np.sqrt(self.input_delay)),
+            name='input_weights_temporary')
+        # self.input_weights = self.add_weight(
+        #     shape=(n_in,n, self.input_delay),
+        #     trainable=True,
+        #     initializer=rand_init(stddev=1. / np.sqrt(n_in * self.input_delay)),
+        #     name='input_weights_spatial')
         
         # define the recurrent weight variable
         self.disconnect_mask = tf.cast(np.repeat(np.diag(np.ones(n, dtype=np.bool))[:, :, np.newaxis],self.post_spike_delay,axis=2), tf.bool)
