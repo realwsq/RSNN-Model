@@ -35,12 +35,11 @@ def calc_r(psth1, psth2, delay=0):
 def PSTH_viz(ax, psth_gt, psth_predict):
 	# spikes: [T, n_neurons]
 
-	n_t = range(sps.shape[1])
-	ax.plot(n_t, psth_gt, 'r', label="gt")
-	ax.plot(n_t, psth_predict, 'g', label='RSNN')
+	ax.plot(psth_gt, 'r', label="gt")
+	ax.plot(psth_predict, 'g', label='RSNN')
 	# ax.title('population psth')
 	ax.legend()
-	ax.show()
+	# ax.show()
 
 
 if __name__ == "__main__":
